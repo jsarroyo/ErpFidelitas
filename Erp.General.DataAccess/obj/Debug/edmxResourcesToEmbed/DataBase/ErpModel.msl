@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ErpDBModelStoreContainer" CdmEntityContainer="ErpDBEntities">
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="ErpDBModel.Companies">
+        <MappingFragment StoreEntitySet="Companies">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="PrincipalEmail" ColumnName="PrincipalEmail" />
+          <ScalarProperty Name="Vision" ColumnName="Vision" />
+          <ScalarProperty Name="Mision" ColumnName="Mision" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Currencys">
+      <EntityTypeMapping TypeName="ErpDBModel.Currencys">
+        <MappingFragment StoreEntitySet="Currencys">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocumentTypes">
+      <EntityTypeMapping TypeName="ErpDBModel.DocumentTypes">
+        <MappingFragment StoreEntitySet="DocumentTypes">
+          <ScalarProperty Name="CreditAccountId" ColumnName="CreditAccountId" />
+          <ScalarProperty Name="DebitAccountId" ColumnName="DebitAccountId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MovementsAccountsReceivable">
+      <EntityTypeMapping TypeName="ErpDBModel.MovementsAccountsReceivable">
+        <MappingFragment StoreEntitySet="MovementsAccountsReceivable">
+          <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="AccountsReceivableId" ColumnName="AccountsReceivableId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MovementsDebtsToPay">
+      <EntityTypeMapping TypeName="ErpDBModel.MovementsDebtsToPay">
+        <MappingFragment StoreEntitySet="MovementsDebtsToPay">
+          <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="DebtsToPayId" ColumnName="DebtsToPayId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MovementsInventory">
+      <EntityTypeMapping TypeName="ErpDBModel.MovementsInventory">
+        <MappingFragment StoreEntitySet="MovementsInventory">
+          <ScalarProperty Name="UnitPriceCurrencyId" ColumnName="UnitPriceCurrencyId" />
+          <ScalarProperty Name="CostCurrencyId" ColumnName="CostCurrencyId" />
+          <ScalarProperty Name="UnitCost" ColumnName="UnitCost" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="MovementLogDate" ColumnName="MovementLogDate" />
+          <ScalarProperty Name="MovementDate" ColumnName="MovementDate" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+          <ScalarProperty Name="InventoryMovementId" ColumnName="InventoryMovementId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parameters">
+      <EntityTypeMapping TypeName="ErpDBModel.Parameters">
+        <MappingFragment StoreEntitySet="Parameters">
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ParameterId" ColumnName="ParameterId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persons">
+      <EntityTypeMapping TypeName="ErpDBModel.Persons">
+        <MappingFragment StoreEntitySet="Persons">
+          <ScalarProperty Name="PreferedCurrencyId" ColumnName="PreferedCurrencyId" />
+          <ScalarProperty Name="PersonTypeId" ColumnName="PersonTypeId" />
+          <ScalarProperty Name="NumberId" ColumnName="NumberId" />
+          <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonType">
+      <EntityTypeMapping TypeName="ErpDBModel.PersonType">
+        <MappingFragment StoreEntitySet="PersonType">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PersonTypeId" ColumnName="PersonTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="ErpDBModel.Products">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="UnitPriceCurrencyId" ColumnName="UnitPriceCurrencyId" />
+          <ScalarProperty Name="UnitCostCurrencyId" ColumnName="UnitCostCurrencyId" />
+          <ScalarProperty Name="UnitCost" ColumnName="UnitCost" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoCambio">
+      <EntityTypeMapping TypeName="ErpDBModel.TipoCambio">
+        <MappingFragment StoreEntitySet="TipoCambio">
+          <ScalarProperty Name="Num_Valor" ColumnName="Num_Valor" />
+          <ScalarProperty Name="Des_Fecha" ColumnName="Des_Fecha" />
+          <ScalarProperty Name="Cod_IndicadorInterno" ColumnName="Cod_IndicadorInterno" />
+          <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

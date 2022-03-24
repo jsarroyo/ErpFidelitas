@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ErpDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ErpDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Companies" EntityType="ErpDBModel.Companies" />
+    <EntitySet Name="Currencys" EntityType="ErpDBModel.Currencys" />
+    <EntitySet Name="DocumentTypes" EntityType="ErpDBModel.DocumentTypes" />
+    <EntitySet Name="MovementsAccountsReceivable" EntityType="ErpDBModel.MovementsAccountsReceivable" />
+    <EntitySet Name="MovementsDebtsToPay" EntityType="ErpDBModel.MovementsDebtsToPay" />
+    <EntitySet Name="MovementsInventory" EntityType="ErpDBModel.MovementsInventory" />
+    <EntitySet Name="Parameters" EntityType="ErpDBModel.Parameters" />
+    <EntitySet Name="Persons" EntityType="ErpDBModel.Persons" />
+    <EntitySet Name="PersonType" EntityType="ErpDBModel.PersonType" />
+    <EntitySet Name="Products" EntityType="ErpDBModel.Products" />
+    <EntitySet Name="TipoCambio" EntityType="ErpDBModel.TipoCambio" />
+    <AssociationSet Name="FK_CompanyMovementsAccountsReceivable" Association="ErpDBModel.FK_CompanyMovementsAccountsReceivable">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="MovementsAccountsReceivable" EntitySet="MovementsAccountsReceivable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyMovementsDebtsToPay" Association="ErpDBModel.FK_CompanyMovementsDebtsToPay">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="MovementsDebtsToPay" EntitySet="MovementsDebtsToPay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyMovementsInventory" Association="ErpDBModel.FK_CompanyMovementsInventory">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="MovementsInventory" EntitySet="MovementsInventory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyParameters" Association="ErpDBModel.FK_CompanyParameters">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="Parameters" EntitySet="Parameters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyProducts" Association="ErpDBModel.FK_CompanyProducts">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovementsAccountsReceivableCurrency" Association="ErpDBModel.FK_MovementsAccountsReceivableCurrency">
+      <End Role="Currencys" EntitySet="Currencys" />
+      <End Role="MovementsAccountsReceivable" EntitySet="MovementsAccountsReceivable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovementsDebtsToPayCurrency" Association="ErpDBModel.FK_MovementsDebtsToPayCurrency">
+      <End Role="Currencys" EntitySet="Currencys" />
+      <End Role="MovementsDebtsToPay" EntitySet="MovementsDebtsToPay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovementsInventoryUnitCostCurrency" Association="ErpDBModel.FK_MovementsInventoryUnitCostCurrency">
+      <End Role="Currencys" EntitySet="Currencys" />
+      <End Role="MovementsInventory" EntitySet="MovementsInventory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovementsInventoryUnitPriceCurrency" Association="ErpDBModel.FK_MovementsInventoryUnitPriceCurrency">
+      <End Role="Currencys" EntitySet="Currencys" />
+      <End Role="MovementsInventory" EntitySet="MovementsInventory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PreferedCurrencyId" Association="ErpDBModel.FK_PreferedCurrencyId">
+      <End Role="Currencys" EntitySet="Currencys" />
+      <End Role="Persons" EntitySet="Persons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UnitCostCurrency" Association="ErpDBModel.FK_UnitCostCurrency">
+      <End Role="Currencys" EntitySet="Currencys" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UnitPriceCurrencyId" Association="ErpDBModel.FK_UnitPriceCurrencyId">
+      <End Role="Currencys" EntitySet="Currencys" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovementsAccountsReceivableDocumentTypes" Association="ErpDBModel.FK_MovementsAccountsReceivableDocumentTypes">
+      <End Role="DocumentTypes" EntitySet="DocumentTypes" />
+      <End Role="MovementsAccountsReceivable" EntitySet="MovementsAccountsReceivable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovementsDebtsToPayDocumentTypes" Association="ErpDBModel.FK_MovementsDebtsToPayDocumentTypes">
+      <End Role="DocumentTypes" EntitySet="DocumentTypes" />
+      <End Role="MovementsDebtsToPay" EntitySet="MovementsDebtsToPay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovementsInventoryDocumentTypes" Association="ErpDBModel.FK_MovementsInventoryDocumentTypes">
+      <End Role="DocumentTypes" EntitySet="DocumentTypes" />
+      <End Role="MovementsInventory" EntitySet="MovementsInventory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products" Association="ErpDBModel.FK_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="MovementsInventory" EntitySet="MovementsInventory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonTypeId" Association="ErpDBModel.FK_PersonTypeId">
+      <End Role="PersonType" EntitySet="PersonType" />
+      <End Role="Persons" EntitySet="Persons" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Companies">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+    </Key>
+    <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Mision" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Vision" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PrincipalEmail" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="MovementsAccountsReceivable" Relationship="ErpDBModel.FK_CompanyMovementsAccountsReceivable" FromRole="Companies" ToRole="MovementsAccountsReceivable" />
+    <NavigationProperty Name="MovementsDebtsToPay" Relationship="ErpDBModel.FK_CompanyMovementsDebtsToPay" FromRole="Companies" ToRole="MovementsDebtsToPay" />
+    <NavigationProperty Name="MovementsInventory" Relationship="ErpDBModel.FK_CompanyMovementsInventory" FromRole="Companies" ToRole="MovementsInventory" />
+    <NavigationProperty Name="Parameters" Relationship="ErpDBModel.FK_CompanyParameters" FromRole="Companies" ToRole="Parameters" />
+    <NavigationProperty Name="Products" Relationship="ErpDBModel.FK_CompanyProducts" FromRole="Companies" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Currencys">
+    <Key>
+      <PropertyRef Name="CurrencyId" />
+    </Key>
+    <Property Name="CurrencyId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="MovementsAccountsReceivable" Relationship="ErpDBModel.FK_MovementsAccountsReceivableCurrency" FromRole="Currencys" ToRole="MovementsAccountsReceivable" />
+    <NavigationProperty Name="MovementsDebtsToPay" Relationship="ErpDBModel.FK_MovementsDebtsToPayCurrency" FromRole="Currencys" ToRole="MovementsDebtsToPay" />
+    <NavigationProperty Name="MovementsInventory" Relationship="ErpDBModel.FK_MovementsInventoryUnitCostCurrency" FromRole="Currencys" ToRole="MovementsInventory" />
+    <NavigationProperty Name="MovementsInventory1" Relationship="ErpDBModel.FK_MovementsInventoryUnitPriceCurrency" FromRole="Currencys" ToRole="MovementsInventory" />
+    <NavigationProperty Name="Persons" Relationship="ErpDBModel.FK_PreferedCurrencyId" FromRole="Currencys" ToRole="Persons" />
+    <NavigationProperty Name="Products" Relationship="ErpDBModel.FK_UnitCostCurrency" FromRole="Currencys" ToRole="Products" />
+    <NavigationProperty Name="Products1" Relationship="ErpDBModel.FK_UnitPriceCurrencyId" FromRole="Currencys" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="DocumentTypes">
+    <Key>
+      <PropertyRef Name="DocumentTypeId" />
+    </Key>
+    <Property Name="DocumentTypeId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DebitAccountId" Type="Int16" Nullable="false" />
+    <Property Name="CreditAccountId" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="MovementsAccountsReceivable" Relationship="ErpDBModel.FK_MovementsAccountsReceivableDocumentTypes" FromRole="DocumentTypes" ToRole="MovementsAccountsReceivable" />
+    <NavigationProperty Name="MovementsDebtsToPay" Relationship="ErpDBModel.FK_MovementsDebtsToPayDocumentTypes" FromRole="DocumentTypes" ToRole="MovementsDebtsToPay" />
+    <NavigationProperty Name="MovementsInventory" Relationship="ErpDBModel.FK_MovementsInventoryDocumentTypes" FromRole="DocumentTypes" ToRole="MovementsInventory" />
+  </EntityType>
+  <EntityType Name="MovementsAccountsReceivable">
+    <Key>
+      <PropertyRef Name="AccountsReceivableId" />
+    </Key>
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="AccountsReceivableId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonId" Type="Int64" />
+    <Property Name="CurrencyId" Type="Int16" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="DocumentTypeId" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Companies" Relationship="ErpDBModel.FK_CompanyMovementsAccountsReceivable" FromRole="MovementsAccountsReceivable" ToRole="Companies" />
+    <NavigationProperty Name="Currencys" Relationship="ErpDBModel.FK_MovementsAccountsReceivableCurrency" FromRole="MovementsAccountsReceivable" ToRole="Currencys" />
+    <NavigationProperty Name="DocumentTypes" Relationship="ErpDBModel.FK_MovementsAccountsReceivableDocumentTypes" FromRole="MovementsAccountsReceivable" ToRole="DocumentTypes" />
+  </EntityType>
+  <EntityType Name="MovementsDebtsToPay">
+    <Key>
+      <PropertyRef Name="DebtsToPayId" />
+    </Key>
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="DebtsToPayId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonId" Type="Int64" />
+    <Property Name="CurrencyId" Type="Int16" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="DocumentTypeId" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Companies" Relationship="ErpDBModel.FK_CompanyMovementsDebtsToPay" FromRole="MovementsDebtsToPay" ToRole="Companies" />
+    <NavigationProperty Name="Currencys" Relationship="ErpDBModel.FK_MovementsDebtsToPayCurrency" FromRole="MovementsDebtsToPay" ToRole="Currencys" />
+    <NavigationProperty Name="DocumentTypes" Relationship="ErpDBModel.FK_MovementsDebtsToPayDocumentTypes" FromRole="MovementsDebtsToPay" ToRole="DocumentTypes" />
+  </EntityType>
+  <EntityType Name="MovementsInventory">
+    <Key>
+      <PropertyRef Name="InventoryMovementId" />
+    </Key>
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="InventoryMovementId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DocumentTypeId" Type="Int16" Nullable="false" />
+    <Property Name="ProductId" Type="Int64" Nullable="false" />
+    <Property Name="Quantity" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="MovementDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MovementLogDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="UnitCost" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="CostCurrencyId" Type="Int16" />
+    <Property Name="UnitPriceCurrencyId" Type="Int16" />
+    <NavigationProperty Name="Companies" Relationship="ErpDBModel.FK_CompanyMovementsInventory" FromRole="MovementsInventory" ToRole="Companies" />
+    <NavigationProperty Name="Currencys" Relationship="ErpDBModel.FK_MovementsInventoryUnitCostCurrency" FromRole="MovementsInventory" ToRole="Currencys" />
+    <NavigationProperty Name="Currencys1" Relationship="ErpDBModel.FK_MovementsInventoryUnitPriceCurrency" FromRole="MovementsInventory" ToRole="Currencys" />
+    <NavigationProperty Name="DocumentTypes" Relationship="ErpDBModel.FK_MovementsInventoryDocumentTypes" FromRole="MovementsInventory" ToRole="DocumentTypes" />
+    <NavigationProperty Name="Products" Relationship="ErpDBModel.FK_Products" FromRole="MovementsInventory" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Parameters">
+    <Key>
+      <PropertyRef Name="ParameterId" />
+    </Key>
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="ParameterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Details" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Companies" Relationship="ErpDBModel.FK_CompanyParameters" FromRole="Parameters" ToRole="Companies" />
+  </EntityType>
+  <EntityType Name="Persons">
+    <Key>
+      <PropertyRef Name="PersonId" />
+    </Key>
+    <Property Name="PersonId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BirthDay" Type="DateTime" Precision="3" />
+    <Property Name="NumberId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PersonTypeId" Type="Int16" />
+    <Property Name="PreferedCurrencyId" Type="Int16" />
+    <NavigationProperty Name="Currencys" Relationship="ErpDBModel.FK_PreferedCurrencyId" FromRole="Persons" ToRole="Currencys" />
+    <NavigationProperty Name="PersonType" Relationship="ErpDBModel.FK_PersonTypeId" FromRole="Persons" ToRole="PersonType" />
+  </EntityType>
+  <EntityType Name="PersonType">
+    <Key>
+      <PropertyRef Name="PersonTypeId" />
+    </Key>
+    <Property Name="PersonTypeId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Persons" Relationship="ErpDBModel.FK_PersonTypeId" FromRole="PersonType" ToRole="Persons" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="UnitCost" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="UnitCostCurrencyId" Type="Int16" />
+    <Property Name="UnitPriceCurrencyId" Type="Int16" />
+    <NavigationProperty Name="Companies" Relationship="ErpDBModel.FK_CompanyProducts" FromRole="Products" ToRole="Companies" />
+    <NavigationProperty Name="Currencys" Relationship="ErpDBModel.FK_UnitCostCurrency" FromRole="Products" ToRole="Currencys" />
+    <NavigationProperty Name="Currencys1" Relationship="ErpDBModel.FK_UnitPriceCurrencyId" FromRole="Products" ToRole="Currencys" />
+    <NavigationProperty Name="MovementsInventory" Relationship="ErpDBModel.FK_Products" FromRole="Products" ToRole="MovementsInventory" />
+  </EntityType>
+  <EntityType Name="TipoCambio">
+    <Key>
+      <PropertyRef Name="Consecutivo" />
+      <PropertyRef Name="Cod_IndicadorInterno" />
+      <PropertyRef Name="Des_Fecha" />
+      <PropertyRef Name="Num_Valor" />
+    </Key>
+    <Property Name="Consecutivo" Type="Int64" Nullable="false" />
+    <Property Name="Cod_IndicadorInterno" Type="Int32" Nullable="false" />
+    <Property Name="Des_Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Num_Valor" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+  </EntityType>
+  <Association Name="FK_CompanyMovementsAccountsReceivable">
+    <End Type="ErpDBModel.Companies" Role="Companies" Multiplicity="1" />
+    <End Type="ErpDBModel.MovementsAccountsReceivable" Role="MovementsAccountsReceivable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="MovementsAccountsReceivable">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyMovementsDebtsToPay">
+    <End Type="ErpDBModel.Companies" Role="Companies" Multiplicity="1" />
+    <End Type="ErpDBModel.MovementsDebtsToPay" Role="MovementsDebtsToPay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="MovementsDebtsToPay">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyMovementsInventory">
+    <End Type="ErpDBModel.Companies" Role="Companies" Multiplicity="1" />
+    <End Type="ErpDBModel.MovementsInventory" Role="MovementsInventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="MovementsInventory">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyParameters">
+    <End Type="ErpDBModel.Companies" Role="Companies" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ErpDBModel.Parameters" Role="Parameters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="Parameters">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyProducts">
+    <End Type="ErpDBModel.Companies" Role="Companies" Multiplicity="1" />
+    <End Type="ErpDBModel.Products" Role="Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovementsAccountsReceivableCurrency">
+    <End Type="ErpDBModel.Currencys" Role="Currencys" Multiplicity="0..1" />
+    <End Type="ErpDBModel.MovementsAccountsReceivable" Role="MovementsAccountsReceivable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currencys">
+        <PropertyRef Name="CurrencyId" />
+      </Principal>
+      <Dependent Role="MovementsAccountsReceivable">
+        <PropertyRef Name="CurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovementsDebtsToPayCurrency">
+    <End Type="ErpDBModel.Currencys" Role="Currencys" Multiplicity="0..1" />
+    <End Type="ErpDBModel.MovementsDebtsToPay" Role="MovementsDebtsToPay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currencys">
+        <PropertyRef Name="CurrencyId" />
+      </Principal>
+      <Dependent Role="MovementsDebtsToPay">
+        <PropertyRef Name="CurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovementsInventoryUnitCostCurrency">
+    <End Type="ErpDBModel.Currencys" Role="Currencys" Multiplicity="0..1" />
+    <End Type="ErpDBModel.MovementsInventory" Role="MovementsInventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currencys">
+        <PropertyRef Name="CurrencyId" />
+      </Principal>
+      <Dependent Role="MovementsInventory">
+        <PropertyRef Name="CostCurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovementsInventoryUnitPriceCurrency">
+    <End Type="ErpDBModel.Currencys" Role="Currencys" Multiplicity="0..1" />
+    <End Type="ErpDBModel.MovementsInventory" Role="MovementsInventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currencys">
+        <PropertyRef Name="CurrencyId" />
+      </Principal>
+      <Dependent Role="MovementsInventory">
+        <PropertyRef Name="UnitPriceCurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PreferedCurrencyId">
+    <End Type="ErpDBModel.Currencys" Role="Currencys" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ErpDBModel.Persons" Role="Persons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currencys">
+        <PropertyRef Name="CurrencyId" />
+      </Principal>
+      <Dependent Role="Persons">
+        <PropertyRef Name="PreferedCurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UnitCostCurrency">
+    <End Type="ErpDBModel.Currencys" Role="Currencys" Multiplicity="0..1" />
+    <End Type="ErpDBModel.Products" Role="Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currencys">
+        <PropertyRef Name="CurrencyId" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="UnitCostCurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UnitPriceCurrencyId">
+    <End Type="ErpDBModel.Currencys" Role="Currencys" Multiplicity="0..1" />
+    <End Type="ErpDBModel.Products" Role="Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currencys">
+        <PropertyRef Name="CurrencyId" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="UnitPriceCurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovementsAccountsReceivableDocumentTypes">
+    <End Type="ErpDBModel.DocumentTypes" Role="DocumentTypes" Multiplicity="1" />
+    <End Type="ErpDBModel.MovementsAccountsReceivable" Role="MovementsAccountsReceivable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocumentTypes">
+        <PropertyRef Name="DocumentTypeId" />
+      </Principal>
+      <Dependent Role="MovementsAccountsReceivable">
+        <PropertyRef Name="DocumentTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovementsDebtsToPayDocumentTypes">
+    <End Type="ErpDBModel.DocumentTypes" Role="DocumentTypes" Multiplicity="1" />
+    <End Type="ErpDBModel.MovementsDebtsToPay" Role="MovementsDebtsToPay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocumentTypes">
+        <PropertyRef Name="DocumentTypeId" />
+      </Principal>
+      <Dependent Role="MovementsDebtsToPay">
+        <PropertyRef Name="DocumentTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovementsInventoryDocumentTypes">
+    <End Type="ErpDBModel.DocumentTypes" Role="DocumentTypes" Multiplicity="1" />
+    <End Type="ErpDBModel.MovementsInventory" Role="MovementsInventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocumentTypes">
+        <PropertyRef Name="DocumentTypeId" />
+      </Principal>
+      <Dependent Role="MovementsInventory">
+        <PropertyRef Name="DocumentTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products">
+    <End Type="ErpDBModel.Products" Role="Products" Multiplicity="1" />
+    <End Type="ErpDBModel.MovementsInventory" Role="MovementsInventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="MovementsInventory">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonTypeId">
+    <End Type="ErpDBModel.PersonType" Role="PersonType" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ErpDBModel.Persons" Role="Persons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonType">
+        <PropertyRef Name="PersonTypeId" />
+      </Principal>
+      <Dependent Role="Persons">
+        <PropertyRef Name="PersonTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,5 @@
+D:\Chus\Desarrollo\.NET\C#\Erp\ErpSolution\Erp.Inventory.BL\bin\Debug\Erp.Inventory.BL.dll
+D:\Chus\Desarrollo\.NET\C#\Erp\ErpSolution\Erp.Inventory.BL\bin\Debug\Erp.Inventory.BL.pdb
+D:\Chus\Desarrollo\.NET\C#\Erp\ErpSolution\Erp.Inventory.BL\obj\Debug\Erp.Inventory.BL.csproj.CoreCompileInputs.cache
+D:\Chus\Desarrollo\.NET\C#\Erp\ErpSolution\Erp.Inventory.BL\obj\Debug\Erp.Inventory.BL.dll
+D:\Chus\Desarrollo\.NET\C#\Erp\ErpSolution\Erp.Inventory.BL\obj\Debug\Erp.Inventory.BL.pdb

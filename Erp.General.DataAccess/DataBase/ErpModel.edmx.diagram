@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8a44685ab0a343bca3cf7fdb190a46c9" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="ErpDBModel.Companies" Width="2.5" PointX="7" PointY="2.25" />
+        <EntityTypeShape EntityType="ErpDBModel.Currencys" Width="2.25" PointX="10.25" PointY="3.75" />
+        <EntityTypeShape EntityType="ErpDBModel.DocumentTypes" Width="1.5" PointX="17.375" PointY="4.5" />
+        <EntityTypeShape EntityType="ErpDBModel.MovementsAccountsReceivable" Width="2.25" PointX="14.5" PointY="1" />
+        <EntityTypeShape EntityType="ErpDBModel.MovementsDebtsToPay" Width="2.25" PointX="14.5" PointY="4.375" />
+        <EntityTypeShape EntityType="ErpDBModel.MovementsInventory" Width="2.25" PointX="14.5" PointY="7.625" />
+        <EntityTypeShape EntityType="ErpDBModel.Parameters" Width="2.25" PointX="4" PointY="2.25" />
+        <EntityTypeShape EntityType="ErpDBModel.Persons" Width="2.125" PointX="4" PointY="5.375" />
+        <EntityTypeShape EntityType="ErpDBModel.PersonType" Width="1.5" PointX="0.75" PointY="6.25" />
+        <EntityTypeShape EntityType="ErpDBModel.Products" Width="1.5" PointX="11.875" PointY="8.5" />
+        <EntityTypeShape EntityType="ErpDBModel.TipoCambio" Width="1.5" PointX="1" PointY="2.375" />
+        <AssociationConnector Association="ErpDBModel.FK_CompanyMovementsAccountsReceivable" />
+        <AssociationConnector Association="ErpDBModel.FK_CompanyMovementsDebtsToPay" />
+        <AssociationConnector Association="ErpDBModel.FK_CompanyMovementsInventory" />
+        <AssociationConnector Association="ErpDBModel.FK_CompanyParameters" />
+        <AssociationConnector Association="ErpDBModel.FK_CompanyProducts" />
+        <AssociationConnector Association="ErpDBModel.FK_MovementsAccountsReceivableCurrency" />
+        <AssociationConnector Association="ErpDBModel.FK_MovementsDebtsToPayCurrency" />
+        <AssociationConnector Association="ErpDBModel.FK_MovementsInventoryUnitCostCurrency" />
+        <AssociationConnector Association="ErpDBModel.FK_MovementsInventoryUnitPriceCurrency" />
+        <AssociationConnector Association="ErpDBModel.FK_PreferedCurrencyId" />
+        <AssociationConnector Association="ErpDBModel.FK_UnitCostCurrency" />
+        <AssociationConnector Association="ErpDBModel.FK_UnitPriceCurrencyId" />
+        <AssociationConnector Association="ErpDBModel.FK_MovementsAccountsReceivableDocumentTypes" />
+        <AssociationConnector Association="ErpDBModel.FK_MovementsDebtsToPayDocumentTypes" />
+        <AssociationConnector Association="ErpDBModel.FK_MovementsInventoryDocumentTypes" />
+        <AssociationConnector Association="ErpDBModel.FK_Products" />
+        <AssociationConnector Association="ErpDBModel.FK_PersonTypeId" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
