@@ -1,16 +1,17 @@
 ﻿using System;
-using System.Data.Entity; 
+using System.Data.Entity;
+using System.Linq;
 using Erp.General.DataAccess.DataBase;
 
 namespace Erp.BL.General
 {
 	public interface GeneralBase
 	{
-		Request Insert();
+		Request Insert(Erp.General.DataAccess.DataBase.Companies insertar);
 		Request GetAll();
 		Request GetById(string id);
 		Request GetByCondition();
-		Request UpdateById(string id);
+		Request UpdateById(Erp.General.DataAccess.DataBase.Companies actualizar);
 		Request Delete(string id);
 		Request Validations();
 
@@ -20,20 +21,32 @@ namespace Erp.BL.General
 	{ 
 		Request request;
 		readonly DB _db;
+		public Companies() {
+			request = new Request();
+		}
 
 		public Request Delete(string id )
 		{
-			request = new Request();
-			//using (ErpDBEntities dBEntities = new ErpDBEntities())
-			//{
-			//	var EntidadBorrar = dBEntities.Companies.Find(id);
-			//	if (EntidadBorrar == null) {
-			//		request.Message = ERROR_MSG;
-			//		return request;
-			//	}
-			//	dBEntities.Companies.Remove(EntidadBorrar);
-			//}
-			return request;
+			try
+			{
+				_db.OpenConnection();
+				var Entidad = _db.dBEntities.Companies.Find(id);
+				if (Entidad == null)
+				{
+					_db.CloseConnection();
+					return request.DoWarning();
+				}
+				_db.dBEntities.Companies.Remove(Entidad);
+				_db.Commit();
+				_db.CloseConnection();
+				return request.DoSuccess();
+
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
 		}
 
 		public Request GetAll()
@@ -43,7 +56,27 @@ namespace Erp.BL.General
 
 		public Request GetByCondition()
 		{
-			throw new NotImplementedException();
+			try
+			{
+				_db.OpenConnection();
+				var Entidad = (from u in _db.dBEntities.Companies.ToList()
+							   select u
+							   ).ToList();
+				;
+				if (Entidad == null)
+				{
+					_db.CloseConnection();
+					return request.DoWarning();
+				}
+				_db.CloseConnection();
+				return request.DoSuccess(Entidad);
+
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
 		}
 
 		public Request GetById(string id)
@@ -67,18 +100,56 @@ namespace Erp.BL.General
 				return request.DoError(ex.Message);
 			}
 		}
-		
-
-		
-
-		public Request Insert()
+		 
+		public Request Insert(Erp.General.DataAccess.DataBase.Companies insertar)
 		{
-			throw new NotImplementedException();
+			try
+			{
+				_db.OpenConnection();
+				var Entidad = _db.dBEntities.Companies.Find(insertar.CompanyId);
+				;
+				if (Entidad == null)
+				{
+					_db.dBEntities.Companies.Add(insertar);
+					_db.Commit();
+					_db.CloseConnection();
+					return request.DoSuccess();
+				}
+				return request.DoWarning();
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
 		}
 
-		public Request UpdateById(string id)
+		public Request UpdateById(Erp.General.DataAccess.DataBase.Companies actualizar)
 		{
-			throw new NotImplementedException();
+			try
+			{
+				_db.OpenConnection();
+				var Entidad = _db.dBEntities.Companies.Find(actualizar.CompanyId);
+				if (Entidad == null)
+				{
+					_db.CloseConnection();
+					return request.DoWarning();
+				}
+				Entidad.Name = actualizar.Name;
+				Entidad.Mision = actualizar.Mision;
+				Entidad.Vision = actualizar.Vision;
+				Entidad.PrincipalEmail = actualizar.PrincipalEmail;
+				Entidad.Active = actualizar.Active;
+				
+				_db.Commit();
+				_db.CloseConnection();
+				return request.DoSuccess();
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
 		}
 		public Request Validations()
 		{

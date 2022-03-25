@@ -20,7 +20,13 @@ namespace Erp.BL.General
 		}
 		public void CloseConnection()
 		{
+			
 			dBEntities.Dispose();
 		}
+		public void Commit()
+		{ 
+			dBEntities.SaveChanges();
+		}
+		 
 	}
 }
