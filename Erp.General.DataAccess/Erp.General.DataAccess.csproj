@@ -95,7 +95,13 @@
     <Compile Include="DataBase\Products.cs">
       <DependentUpon>ErpModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataBase\RolUsers.cs">
+      <DependentUpon>ErpModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataBase\TipoCambio.cs">
+      <DependentUpon>ErpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Users.cs">
       <DependentUpon>ErpModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
