@@ -1,4 +1,5 @@
-﻿using Erp.BL.General; 
+﻿using Erp.BL.General;
+using Erp.General.DataAccess;
 using System.Web.Http; 
 
 namespace Erp.General.Api.Controllers

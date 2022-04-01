@@ -119,6 +119,10 @@
       <Project>{6DE8C0D4-B10A-417F-9ABD-92D1027F9E5C}</Project>
       <Name>Erp.BL.General</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Erp.General.DataAccess\Erp.General.DataAccess.csproj">
+      <Project>{8649e494-47e2-4856-b4cc-8897c08e7aad}</Project>
+      <Name>Erp.General.DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
