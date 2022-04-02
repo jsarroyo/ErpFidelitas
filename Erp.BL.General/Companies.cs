@@ -13,19 +13,19 @@ namespace Erp.BL.General
 		Request GetByCondition();
 		Request UpdateById(Erp.General.DataAccess.DataBase.Companies actualizar);
 		Request Delete(string id);
-		Request Validations();
+		Request Validations(Erp.General.DataAccess.DataBase.Companies insertar);
 
 	}
-	
+	//
 	public class Companies : GeneralBase
-	{ 
+	{
 		Request request;
 		readonly DB _db;
 		public Companies() {
 			request = new Request();
 		}
 
-		public Request Delete(string id )
+		public Request Delete(string id)
 		{
 			try
 			{
@@ -100,9 +100,14 @@ namespace Erp.BL.General
 				return request.DoError(ex.Message);
 			}
 		}
-		 
+
 		public Request Insert(Erp.General.DataAccess.DataBase.Companies insertar)
 		{
+			request = Validations(insertar);
+			if (request.Warning || request.Error)
+			{
+				return request;
+			}
 			try
 			{
 				_db.OpenConnection();
@@ -126,6 +131,10 @@ namespace Erp.BL.General
 
 		public Request UpdateById(Erp.General.DataAccess.DataBase.Companies actualizar)
 		{
+			request = Validations(actualizar);
+			if (request.Warning || request.Error) {
+				return request;
+			}
 			try
 			{
 				_db.OpenConnection();
@@ -151,13 +160,77 @@ namespace Erp.BL.General
 				return request.DoError(ex.Message);
 			}
 		}
-		public Request Validations()
+		public Request Validations(Erp.General.DataAccess.DataBase.Companies validar)
+		{
+			if (string.IsNullOrEmpty(validar.Name)) 
+			{
+				request.Details = "El nombre de la compañia no puede estar vacío";
+				return request.DoWarning();
+			}
+			return request.DoSuccess();
+		}
+	}
+	public class Currencys : GeneralBase
+	{
+		Request request;
+		readonly DB _db;
+		public Currencys()
+		{
+			request = new Request();
+		}
+		public Request Delete(string id)
+		{
+			try
+			{
+				_db.OpenConnection();
+				var Entidad = _db.dBEntities.Currencys.Find(id);
+				if (Entidad == null)
+				{
+					_db.CloseConnection();
+					return request.DoWarning();
+				}
+				_db.dBEntities.Currencys.Remove(Entidad);
+				_db.Commit();
+				_db.CloseConnection();
+				return request.DoSuccess();
+
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
+		}
+
+		public Request GetAll()
 		{
 			throw new NotImplementedException();
 		}
-	}
-	public class Currencys
-	{
+
+		public Request GetByCondition()
+		{
+			throw new NotImplementedException();
+		}
+
+		public Request GetById(string id)
+		{
+			throw new NotImplementedException();
+		}
+
+		public Request Insert(Erp.General.DataAccess.DataBase.Companies insertar)
+		{
+			throw new NotImplementedException();
+		}
+
+		public Request UpdateById(Erp.General.DataAccess.DataBase.Companies actualizar)
+		{
+			throw new NotImplementedException();
+		}
+
+		public Request Validations(Erp.General.DataAccess.DataBase.Companies insertar)
+		{
+			throw new NotImplementedException();
+		}
 	}
 	public class DocumentTypes
 	{

@@ -6,8 +6,9 @@ namespace Erp.General.Api.Controllers
     public class CompaniesController : ApiController
     {
         Companies myCompany;
+        //[FiltroSeguridad]
         [HttpGet]
-        [Route("api//ObtenerUsuarios")]
+        [Route("General/Compania/ObtenerUno")]
         public Request ObtenerUno(string id)
         {
             myCompany = new Companies();
