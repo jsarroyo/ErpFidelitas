@@ -118,8 +118,8 @@
           <Property Name="RolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TypeRol" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'ProyectoERP.dbo.TipoCambio' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ErpDB.dbo.TipoCambio' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TipoCambio">
           <Key>
             <PropertyRef Name="Consecutivo" />
@@ -180,7 +180,9 @@ advertencia 6002: La tabla o vista 'ProyectoERP.dbo.TipoCambio' no tiene definid
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CompanyParameters">
-          <End Role="Companies" Type="Self.Companies" Multiplicity="1" />
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Parameters" Type="Self.Parameters" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Companies">
@@ -288,7 +290,9 @@ advertencia 6002: La tabla o vista 'ProyectoERP.dbo.TipoCambio' no tiene definid
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PersonTypeId">
-          <End Role="PersonType" Type="Self.PersonType" Multiplicity="0..1" />
+          <End Role="PersonType" Type="Self.PersonType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Persons" Type="Self.Persons" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PersonType">
@@ -300,7 +304,9 @@ advertencia 6002: La tabla o vista 'ProyectoERP.dbo.TipoCambio' no tiene definid
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PreferedCurrencyId">
-          <End Role="Currencys" Type="Self.Currencys" Multiplicity="0..1" />
+          <End Role="Currencys" Type="Self.Currencys" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Persons" Type="Self.Persons" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Currencys">

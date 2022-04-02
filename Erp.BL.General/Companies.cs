@@ -44,13 +44,12 @@ namespace Erp.BL.General
 		{
 			try
 			{
-				_db.OpenConnection();
-				var Entidades = _db.dBEntities.Companies.ToList();
+				var Entidades = _db.dBEntities.Companies.Find();
 				if (Entidades == null)
-                {
-                    _db.CloseConnection();
-                    return request.DoWarning();
-                }
+				{
+					_db.CloseConnection();
+					return request.DoWarning();
+				}
 				return request.DoSuccess(Entidades);
 			}
 			catch (Exception ex)
@@ -87,17 +86,28 @@ namespace Erp.BL.General
 
 		public Request GetById(int id)
 		{
+
+			//using (var contexto = new LN_BDEntities())
+			//{
+			//	try
+			//	{
+			//		var datos = (from u in contexto.TUsuarios
+			//					 select u).ToList();
 			try
 			{
-				_db.OpenConnection();
-				var Entidad = _db.dBEntities.Companies.Where(c => c.CompanyId == id).FirstOrDefault();
-				if (Entidad == null)
+				using (var Entidades = new ErpDBEntities())
 				{
+					var Entidad = Entidades.Companies.Find();
+					if (Entidad == null)
+					{
+						_db.CloseConnection();
+						return request.DoWarning();
+					}
 					_db.CloseConnection();
-					return request.DoWarning();
+					return request.DoSuccess(Entidad);
 				}
-				_db.CloseConnection();
-				return request.DoSuccess(Entidad);
+
+
 
 			}
 			catch (Exception ex)
