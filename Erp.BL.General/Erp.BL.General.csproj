@@ -49,9 +49,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Companies.cs" />
+    <Compile Include="Currencys.cs" />
     <Compile Include="DB.cs" />
+    <Compile Include="DocumentTypes.cs" />
+    <Compile Include="IGeneralBase.cs" />
+    <Compile Include="Parameters.cs" />
+    <Compile Include="Persons.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request.cs" />
+    <Compile Include="TipoCambio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Erp.General.DataAccess\Erp.General.DataAccess.csproj">

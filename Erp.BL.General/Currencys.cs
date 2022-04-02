@@ -1,37 +1,37 @@
 ﻿using System;
-using System.Data.Entity;
+using System.Collections.Generic;
 using System.Linq;
-using Erp.General.DataAccess.DataBase;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Erp.BL.General
 {
-	
-	
-	public class Companies : IGeneralBase
-	{ 
+	public class Currencys
+	{
+
 		Request request;
 		readonly DB _db;
-		public Companies() {
+		public Currencys()
+		{
 			request = new Request();
 			_db = new DB();
 		}
 
-		public Request Delete(int id )
+		public Request Insert(Erp.General.DataAccess.DataBase.Currencys insertar)
 		{
 			try
 			{
 				_db.OpenConnection();
-				var Entidad = _db.dBEntities.Companies.Where(c => c.CompanyId == id).FirstOrDefault();
+				var Entidad = _db.dBEntities.Companies.Find(insertar.CurrencyId);
+
 				if (Entidad == null)
 				{
+					_db.dBEntities.Currencys.Add(insertar);
+					_db.Commit();
 					_db.CloseConnection();
-					return request.DoWarning();
+					return request.DoSuccess();
 				}
-				_db.dBEntities.Companies.Remove(Entidad);
-				_db.Commit();
-				_db.CloseConnection();
-				return request.DoSuccess();
-
+				return request.DoWarning();
 			}
 			catch (Exception ex)
 			{
@@ -45,13 +45,37 @@ namespace Erp.BL.General
 			try
 			{
 				_db.OpenConnection();
-				var Entidades = _db.dBEntities.Companies.ToList();
+				var Entidades = _db.dBEntities.Currencys.ToList();
+
+				_db.CloseConnection();
+
 				if (Entidades == null)
-                {
-                    _db.CloseConnection();
-                    return request.DoWarning();
-                }
+					return request.DoWarning();
+
+
 				return request.DoSuccess(Entidades);
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
+		}
+
+		public Request GetById(int id)
+		{
+			try
+			{
+				_db.OpenConnection();
+				var Entidad = _db.dBEntities.Currencys.Where(c => c.CurrencyId == id).FirstOrDefault();
+				if (Entidad == null)
+				{
+					_db.CloseConnection();
+					return request.DoWarning();
+				}
+				_db.CloseConnection();
+				return request.DoSuccess(Entidad);
+
 			}
 			catch (Exception ex)
 			{
@@ -65,7 +89,7 @@ namespace Erp.BL.General
 			try
 			{
 				_db.OpenConnection();
-				var Entidad = (from u in _db.dBEntities.Companies.ToList()
+				var Entidad = (from u in _db.dBEntities.Currencys.ToList()
 							   select u
 							   ).ToList();
 				;
@@ -85,68 +109,26 @@ namespace Erp.BL.General
 			}
 		}
 
-		public Request GetById(int id)
+		public Request UpdateById(Erp.General.DataAccess.DataBase.Currencys actualizar)
 		{
 			try
 			{
 				_db.OpenConnection();
-				var Entidad = _db.dBEntities.Companies.Where(c => c.CompanyId == id).FirstOrDefault();
-				if (Entidad == null)
-				{
-					_db.CloseConnection();
-					return request.DoWarning();
-				}
-				_db.CloseConnection();
-				return request.DoSuccess(Entidad);
-
-			}
-			catch (Exception ex)
-			{
-				_db.CloseConnection();
-				return request.DoError(ex.Message);
-			}
-		}
-		 
-		public Request Insert(Erp.General.DataAccess.DataBase.Companies insertar)
-		{
-			try
-			{
-				_db.OpenConnection();
-				var Entidad = _db.dBEntities.Companies.Find(insertar.CompanyId);
-				if (Entidad == null)
-				{
-					_db.dBEntities.Companies.Add(insertar);
-					_db.Commit();
-					_db.CloseConnection();
-					return request.DoSuccess();
-				}
-				_db.CloseConnection();
-				return request.DoWarning();
-			}
-			catch (Exception ex)
-			{
-				_db.CloseConnection();
-				return request.DoError(ex.Message);
-			}
-		}
-
-		public Request UpdateById(Erp.General.DataAccess.DataBase.Companies actualizar)
-		{
-			try
-			{
-				_db.OpenConnection();
-				var Entidad = _db.dBEntities.Companies.Where(c => c.CompanyId == actualizar.CompanyId).FirstOrDefault();
+				var Entidad = _db.dBEntities.Currencys.Where(c => c.CurrencyId == actualizar.CurrencyId).FirstOrDefault();
 				if (Entidad == null)
 				{
 					_db.CloseConnection();
 					return request.DoWarning();
 				}
 				Entidad.Name = actualizar.Name;
-				Entidad.Mision = actualizar.Mision;
-				Entidad.Vision = actualizar.Vision;
-				Entidad.PrincipalEmail = actualizar.PrincipalEmail;
-				Entidad.Active = actualizar.Active;
-				
+				Entidad.MovementsAccountsReceivable = actualizar.MovementsAccountsReceivable;
+				Entidad.MovementsDebtsToPay = actualizar.MovementsDebtsToPay;
+				Entidad.MovementsInventory = actualizar.MovementsInventory;
+				Entidad.MovementsInventory1 = actualizar.MovementsInventory1;
+				Entidad.Persons = actualizar.Persons;
+				Entidad.Products = actualizar.Products;
+				Entidad.Products1 = actualizar.Products1;
+
 				_db.Commit();
 				_db.CloseConnection();
 				return request.DoSuccess();
@@ -157,10 +139,34 @@ namespace Erp.BL.General
 				return request.DoError(ex.Message);
 			}
 		}
+
+		public Request Delete(int id)
+		{
+			try
+			{
+				_db.OpenConnection();
+				var Entidad = _db.dBEntities.Currencys.Where(c => c.CurrencyId == id).FirstOrDefault();
+				if (Entidad == null)
+				{
+					_db.CloseConnection();
+					return request.DoWarning();
+				}
+				_db.dBEntities.Currencys.Remove(Entidad);
+				_db.Commit();
+				_db.CloseConnection();
+				return request.DoSuccess();
+
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
+		}
+
 		public Request Validations()
 		{
 			throw new NotImplementedException();
 		}
-	} 
-   
+	}
 }

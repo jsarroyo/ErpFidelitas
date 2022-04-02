@@ -1,33 +1,33 @@
 ﻿using System;
-using System.Data.Entity;
+using System.Collections.Generic;
 using System.Linq;
-using Erp.General.DataAccess.DataBase;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Erp.BL.General
 {
-	
-	
-	public class Companies : IGeneralBase
-	{ 
+	public class DocumentTypes
+	{
 		Request request;
 		readonly DB _db;
-		public Companies() {
+		public DocumentTypes()
+		{
 			request = new Request();
 			_db = new DB();
 		}
 
-		public Request Delete(int id )
+		public Request Delete(int id)
 		{
 			try
 			{
 				_db.OpenConnection();
-				var Entidad = _db.dBEntities.Companies.Where(c => c.CompanyId == id).FirstOrDefault();
+				var Entidad = _db.dBEntities.DocumentTypes.Where(c => c.DocumentTypeId == id).FirstOrDefault();
 				if (Entidad == null)
 				{
 					_db.CloseConnection();
 					return request.DoWarning();
 				}
-				_db.dBEntities.Companies.Remove(Entidad);
+				_db.dBEntities.DocumentTypes.Remove(Entidad);
 				_db.Commit();
 				_db.CloseConnection();
 				return request.DoSuccess();
@@ -45,12 +45,14 @@ namespace Erp.BL.General
 			try
 			{
 				_db.OpenConnection();
-				var Entidades = _db.dBEntities.Companies.ToList();
+				var Entidades = _db.dBEntities.DocumentTypes.ToList();
+
+				_db.CloseConnection();
+
 				if (Entidades == null)
-                {
-                    _db.CloseConnection();
-                    return request.DoWarning();
-                }
+					return request.DoWarning();
+
+
 				return request.DoSuccess(Entidades);
 			}
 			catch (Exception ex)
@@ -65,7 +67,7 @@ namespace Erp.BL.General
 			try
 			{
 				_db.OpenConnection();
-				var Entidad = (from u in _db.dBEntities.Companies.ToList()
+				var Entidad = (from u in _db.dBEntities.DocumentTypes.ToList()
 							   select u
 							   ).ToList();
 				;
@@ -90,7 +92,7 @@ namespace Erp.BL.General
 			try
 			{
 				_db.OpenConnection();
-				var Entidad = _db.dBEntities.Companies.Where(c => c.CompanyId == id).FirstOrDefault();
+				var Entidad = _db.dBEntities.DocumentTypes.Where(c => c.DocumentTypeId == id).FirstOrDefault();
 				if (Entidad == null)
 				{
 					_db.CloseConnection();
@@ -106,21 +108,21 @@ namespace Erp.BL.General
 				return request.DoError(ex.Message);
 			}
 		}
-		 
-		public Request Insert(Erp.General.DataAccess.DataBase.Companies insertar)
+
+		public Request Insert(Erp.General.DataAccess.DataBase.DocumentTypes insertar)
 		{
 			try
 			{
 				_db.OpenConnection();
-				var Entidad = _db.dBEntities.Companies.Find(insertar.CompanyId);
+				var Entidad = _db.dBEntities.DocumentTypes.Find(insertar.DocumentTypeId);
+
 				if (Entidad == null)
 				{
-					_db.dBEntities.Companies.Add(insertar);
+					_db.dBEntities.DocumentTypes.Add(insertar);
 					_db.Commit();
 					_db.CloseConnection();
 					return request.DoSuccess();
 				}
-				_db.CloseConnection();
 				return request.DoWarning();
 			}
 			catch (Exception ex)
@@ -130,23 +132,19 @@ namespace Erp.BL.General
 			}
 		}
 
-		public Request UpdateById(Erp.General.DataAccess.DataBase.Companies actualizar)
+		public Request UpdateById(Erp.General.DataAccess.DataBase.DocumentTypes actualizar)
 		{
 			try
 			{
 				_db.OpenConnection();
-				var Entidad = _db.dBEntities.Companies.Where(c => c.CompanyId == actualizar.CompanyId).FirstOrDefault();
+				var Entidad = _db.dBEntities.DocumentTypes.Where(c => c.DocumentTypeId == actualizar.DocumentTypeId).FirstOrDefault();
 				if (Entidad == null)
 				{
 					_db.CloseConnection();
 					return request.DoWarning();
 				}
-				Entidad.Name = actualizar.Name;
-				Entidad.Mision = actualizar.Mision;
-				Entidad.Vision = actualizar.Vision;
-				Entidad.PrincipalEmail = actualizar.PrincipalEmail;
-				Entidad.Active = actualizar.Active;
-				
+				Entidad = actualizar;
+
 				_db.Commit();
 				_db.CloseConnection();
 				return request.DoSuccess();
@@ -157,10 +155,10 @@ namespace Erp.BL.General
 				return request.DoError(ex.Message);
 			}
 		}
+
 		public Request Validations()
 		{
 			throw new NotImplementedException();
 		}
-	} 
-   
+	}
 }
