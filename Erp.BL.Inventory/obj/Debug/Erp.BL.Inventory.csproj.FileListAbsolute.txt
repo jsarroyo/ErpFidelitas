@@ -4,3 +4,9 @@ D:\Chus\Desarrollo\.NET\C#\Erp\ErpSolution\Erp.BL.Inventory\obj\Debug\Erp.BL.Inv
 D:\Chus\Desarrollo\.NET\C#\Erp\ErpSolution\Erp.BL.Inventory\obj\Debug\Erp.BL.Inventory.csproj.CoreCompileInputs.cache
 D:\Chus\Desarrollo\.NET\C#\Erp\ErpSolution\Erp.BL.Inventory\obj\Debug\Erp.Inventory.BL.dll
 D:\Chus\Desarrollo\.NET\C#\Erp\ErpSolution\Erp.BL.Inventory\obj\Debug\Erp.Inventory.BL.pdb
+D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.BL.Inventory\bin\Debug\Erp.Inventory.BL.dll
+D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.BL.Inventory\bin\Debug\Erp.Inventory.BL.pdb
+D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.BL.Inventory\obj\Debug\Erp.BL.Inventory.csproj.AssemblyReference.cache
+D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.BL.Inventory\obj\Debug\Erp.BL.Inventory.csproj.CoreCompileInputs.cache
+D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.BL.Inventory\obj\Debug\Erp.Inventory.BL.dll
+D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.BL.Inventory\obj\Debug\Erp.Inventory.BL.pdb

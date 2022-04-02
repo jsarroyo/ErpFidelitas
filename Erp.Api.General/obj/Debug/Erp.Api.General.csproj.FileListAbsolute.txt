@@ -65,5 +65,3 @@ D:\Chus\Desarrollo\.NET\C#\Erp\ErpSolution\Erp.Api.General\obj\Debug\Erp.General
 D:\Chus\Desarrollo\.NET\C#\Erp\ErpSolution\Erp.Api.General\obj\Debug\Erp.General.Api.pdb
 D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.Api.General\obj\Debug\Erp.Api.General.csproj.AssemblyReference.cache
 D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.Api.General\obj\Debug\Erp.Api.General.csproj.CoreCompileInputs.cache
-D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.Api.General\obj\Debug\Erp.General.Api.dll
-D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.Api.General\obj\Debug\Erp.General.Api.pdb

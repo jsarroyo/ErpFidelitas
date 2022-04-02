@@ -9,7 +9,7 @@ namespace Erp.General.Api.Controllers
         //[FiltroSeguridad]
         [HttpGet]
         [Route("General/Compania/ObtenerUno")]
-        public Request ObtenerUno(string id)
+        public Request ObtenerUno(int id)
         {
             myCompany = new Companies();
             return myCompany.GetById(id);

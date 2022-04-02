@@ -48,6 +48,12 @@ DROP TABLE [dbo].[TipoCambio];
 GO
 DROP TABLE [dbo].[MovementsInventory];
 GO
+DROP TABLE [dbo].[RolUsers];
+GO
+
+DROP TABLE [dbo].[Users];
+GO
+
 
 -- Propósito: Almacenar monedas que se utilizan en el sistema  
 -- Valores por defecto: 
@@ -274,4 +280,39 @@ CREATE TABLE [dbo].[MovementsInventory] (
     CONSTRAINT FK_Products  FOREIGN KEY ([ProductId])
                                     REFERENCES [dbo].[Products] ([ProductId]),
 
+);
+
+
+-- Propósito: Almacenar los roles del sistema
+-- Autor: Yislim
+-- Modificaciones: N/A 
+-- Valores por defecto:   1-Admin 2-Operador
+-- Notas: ** 
+
+CREATE TABLE [dbo].[RolUsers] ( 
+    [RolId]        INT        IDENTITY (1, 1)   NOT NULL,
+    [TypeRol]                  VARCHAR (100)   NOT NULL,
+
+	 CONSTRAINT PK_RolId  PRIMARY KEY NONCLUSTERED ([RolId]),
+);
+ 
+ 
+-- Propósito: Almacenar los usuarios con un rol en especifico. 
+-- Autor: Yislim
+-- Modificaciones: N/A 
+-- Valores por defecto:   
+-- Notas: ** 
+
+CREATE TABLE [dbo].[Users] ( 
+    [UserId]        INT        IDENTITY (1, 1)  NOT NULL,
+    [RolId]          INT       NOT NULL,
+	[FirstName]             VARCHAR (100)   NOT NULL,
+	[UserName]               NVARCHAR(255) NOT NULL,
+	[Email]                  NVARCHAR(255) NOT NULL,
+	[Password]               NVARCHAR(255) NOT NULL,
+
+	CONSTRAINT PK_UserId  PRIMARY KEY NONCLUSTERED (UserId),
+
+	CONSTRAINT FK_RolUsers  FOREIGN KEY ([RolId])
+                                    REFERENCES [dbo].[RolUsers] ([RolId]),
 );
