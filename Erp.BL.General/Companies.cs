@@ -97,7 +97,7 @@ namespace Erp.BL.General
 			{
 				using (var Entidades = new ErpDBEntities())
 				{
-					var Entidad = Entidades.Companies.Find();
+					var Entidad = Entidades.Companies.Find(id);
 					if (Entidad == null)
 					{
 						_db.CloseConnection();
