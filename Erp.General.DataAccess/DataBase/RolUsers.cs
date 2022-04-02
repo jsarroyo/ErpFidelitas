@@ -12,26 +12,18 @@ namespace Erp.General.DataAccess.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Products
+    public partial class RolUsers
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Products()
+        public RolUsers()
         {
-            this.MovementsInventory = new HashSet<MovementsInventory>();
+            this.Users = new HashSet<Users>();
         }
     
-        public int CompanyId { get; set; }
-        public long ProductId { get; set; }
-        public string Name { get; set; }
-        public decimal UnitPrice { get; set; }
-        public decimal UnitCost { get; set; }
-        public Nullable<short> UnitCostCurrencyId { get; set; }
-        public Nullable<short> UnitPriceCurrencyId { get; set; }
+        public int RolId { get; set; }
+        public string TypeRol { get; set; }
     
-        public virtual Companies Companies { get; set; }
-        public virtual Currencys Currencys { get; set; }
-        public virtual Currencys Currencys1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MovementsInventory> MovementsInventory { get; set; }
+        public virtual ICollection<Users> Users { get; set; }
     }
 }

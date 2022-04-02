@@ -9,11 +9,11 @@ namespace Erp.BL.General
 	{
 		Request Insert(Erp.General.DataAccess.DataBase.Companies insertar);
 		Request GetAll();
-		Request GetById(string id);
+		Request GetById(int id);
 		Request GetByCondition();
 		Request UpdateById(Erp.General.DataAccess.DataBase.Companies actualizar);
-		Request Delete(string id);
-		Request Validations(Erp.General.DataAccess.DataBase.Companies insertar);
+		Request Delete(int id);
+		Request Validations();
 
 	}
 	//
@@ -25,12 +25,12 @@ namespace Erp.BL.General
 			request = new Request();
 		}
 
-		public Request Delete(string id)
+		public Request Delete(int id )
 		{
 			try
 			{
 				_db.OpenConnection();
-				var Entidad = _db.dBEntities.Companies.Find(id);
+				var Entidad = _db.dBEntities.Companies.Where(c => c.CompanyId == id).FirstOrDefault();
 				if (Entidad == null)
 				{
 					_db.CloseConnection();
@@ -51,7 +51,22 @@ namespace Erp.BL.General
 
 		public Request GetAll()
 		{
-			throw new NotImplementedException();
+			try
+			{
+				_db.OpenConnection();
+				var Entidades = _db.dBEntities.Companies.ToList();
+				if (Entidades == null)
+                {
+                    _db.CloseConnection();
+                    return request.DoWarning();
+                }
+				return request.DoSuccess(Entidades);
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
 		}
 
 		public Request GetByCondition()
@@ -79,12 +94,12 @@ namespace Erp.BL.General
 			}
 		}
 
-		public Request GetById(string id)
+		public Request GetById(int id)
 		{
 			try
 			{
 				_db.OpenConnection();
-				var Entidad = _db.dBEntities.Companies.Find(id);
+				var Entidad = _db.dBEntities.Companies.Where(c => c.CompanyId == id).FirstOrDefault();
 				if (Entidad == null)
 				{
 					_db.CloseConnection();
@@ -112,7 +127,6 @@ namespace Erp.BL.General
 			{
 				_db.OpenConnection();
 				var Entidad = _db.dBEntities.Companies.Find(insertar.CompanyId);
-				;
 				if (Entidad == null)
 				{
 					_db.dBEntities.Companies.Add(insertar);
@@ -120,6 +134,7 @@ namespace Erp.BL.General
 					_db.CloseConnection();
 					return request.DoSuccess();
 				}
+				_db.CloseConnection();
 				return request.DoWarning();
 			}
 			catch (Exception ex)
@@ -138,7 +153,7 @@ namespace Erp.BL.General
 			try
 			{
 				_db.OpenConnection();
-				var Entidad = _db.dBEntities.Companies.Find(actualizar.CompanyId);
+				var Entidad = _db.dBEntities.Companies.Where(c => c.CompanyId == actualizar.CompanyId).FirstOrDefault();
 				if (Entidad == null)
 				{
 					_db.CloseConnection();
@@ -221,16 +236,9 @@ namespace Erp.BL.General
 		{
 			throw new NotImplementedException();
 		}
-
-		public Request UpdateById(Erp.General.DataAccess.DataBase.Companies actualizar)
-		{
-			throw new NotImplementedException();
-		}
-
-		public Request Validations(Erp.General.DataAccess.DataBase.Companies insertar)
-		{
-			throw new NotImplementedException();
-		}
+	}
+	public class Currencys
+	{
 	}
 	public class DocumentTypes
 	{
@@ -239,10 +247,290 @@ namespace Erp.BL.General
 	{
 	}
 
-	public class Persons
-	{
-	}
-	public class TipoCambio
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
+		}
+
+        public Request GetAll()
+        {
+			try
+			{
+				_db.OpenConnection();
+				var Entidades = _db.dBEntities.Parameters.ToList();
+
+				_db.CloseConnection();
+
+				if (Entidades == null)
+					return request.DoWarning();
+
+
+				return request.DoSuccess(Entidades);
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
+		}
+
+        public Request GetByCondition()
+        {
+			try
+			{
+				_db.OpenConnection();
+				var Entidad = (from u in _db.dBEntities.Parameters.ToList()
+							   select u
+							   ).ToList();
+				;
+				if (Entidad == null)
+				{
+					_db.CloseConnection();
+					return request.DoWarning();
+				}
+				_db.CloseConnection();
+				return request.DoSuccess(Entidad);
+
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
+		}
+
+        public Request GetById(int id)
+        {
+			try
+			{
+				_db.OpenConnection();
+				var Entidad = _db.dBEntities.Parameters.Where(c => c.ParameterId == id).FirstOrDefault();
+				if (Entidad == null)
+				{
+					_db.CloseConnection();
+					return request.DoWarning();
+				}
+				_db.CloseConnection();
+				return request.DoSuccess(Entidad);
+
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
+		}
+
+        public Request Insert(Erp.General.DataAccess.DataBase.Parameters insertar)
+        {
+			try
+			{
+				_db.OpenConnection();
+				var Entidad = _db.dBEntities.Parameters.Find(insertar.ParameterId);
+
+				if (Entidad == null)
+				{
+					_db.dBEntities.Parameters.Add(insertar);
+					_db.Commit();
+					_db.CloseConnection();
+					return request.DoSuccess();
+				}
+				return request.DoWarning();
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
+		}
+
+        public Request UpdateById(Erp.General.DataAccess.DataBase.Parameters actualizar)
+        {
+			try
+			{
+				_db.OpenConnection();
+				var Entidad = _db.dBEntities.Parameters.Where(c => c.ParameterId == actualizar.ParameterId).FirstOrDefault();
+				if (Entidad == null)
+				{
+					_db.CloseConnection();
+					return request.DoWarning();
+				}
+				Entidad = actualizar;
+
+				_db.Commit();
+				_db.CloseConnection();
+				return request.DoSuccess();
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
+		}
+
+        public Request Validations()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class Persons
+    {
+		Request request;
+		readonly DB _db;
+		public Persons()
+		{
+			request = new Request();
+		}
+		public Request Delete(int id)
+        {
+			try
+			{
+				_db.OpenConnection();
+				var Entidad = _db.dBEntities.Persons.Where(c => c.PersonId == id).FirstOrDefault();
+				if (Entidad == null)
+				{
+					_db.CloseConnection();
+					return request.DoWarning();
+				}
+				_db.dBEntities.Persons.Remove(Entidad);
+				_db.Commit();
+				_db.CloseConnection();
+				return request.DoSuccess();
+
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
+		}
+
+        public Request GetAll()
+        {
+			try
+			{
+				_db.OpenConnection();
+				var Entidades = _db.dBEntities.Persons.ToList();
+
+				_db.CloseConnection();
+
+				if (Entidades == null)
+					return request.DoWarning();
+
+
+				return request.DoSuccess(Entidades);
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
+		}
+
+        public Request GetByCondition()
+        {
+			try
+			{
+				_db.OpenConnection();
+				var Entidad = (from u in _db.dBEntities.Persons.ToList()
+							   select u
+							   ).ToList();
+				;
+				if (Entidad == null)
+				{
+					_db.CloseConnection();
+					return request.DoWarning();
+				}
+				_db.CloseConnection();
+				return request.DoSuccess(Entidad);
+
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
+		}
+
+        public Request GetById(int id)
+        {
+			try
+			{
+				_db.OpenConnection();
+				var Entidad = _db.dBEntities.Persons.Where(c => c.PersonId == id).FirstOrDefault();
+				if (Entidad == null)
+				{
+					_db.CloseConnection();
+					return request.DoWarning();
+				}
+				_db.CloseConnection();
+				return request.DoSuccess(Entidad);
+
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
+		}
+
+        public Request Insert(Erp.General.DataAccess.DataBase.Persons insertar)
+        {
+			try
+			{
+				_db.OpenConnection();
+				var Entidad = _db.dBEntities.Persons.Find(insertar.PersonId);
+
+				if (Entidad == null)
+				{
+					_db.dBEntities.Persons.Add(insertar);
+					_db.Commit();
+					_db.CloseConnection();
+					return request.DoSuccess();
+				}
+				return request.DoWarning();
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
+		}
+
+        public Request UpdateById(Erp.General.DataAccess.DataBase.Persons actualizar)
+        {
+			try
+			{
+				_db.OpenConnection();
+				var Entidad = _db.dBEntities.Persons.Where(c => c.PersonId == actualizar.PersonId).FirstOrDefault();
+				if (Entidad == null)
+				{
+					_db.CloseConnection();
+					return request.DoWarning();
+				}
+				Entidad = actualizar;
+
+				_db.Commit();
+				_db.CloseConnection();
+				return request.DoSuccess();
+			}
+			catch (Exception ex)
+			{
+				_db.CloseConnection();
+				return request.DoError(ex.Message);
+			}
+		}
+
+        public Request Validations()
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class TipoCambio
 	{
 	}
 

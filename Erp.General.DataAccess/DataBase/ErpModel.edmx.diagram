@@ -33,6 +33,9 @@
         <AssociationConnector Association="ErpDBModel.FK_MovementsInventoryDocumentTypes" />
         <AssociationConnector Association="ErpDBModel.FK_Products" />
         <AssociationConnector Association="ErpDBModel.FK_PersonTypeId" />
+        <EntityTypeShape EntityType="ErpDBModel.RolUsers" Width="1.5" PointX="0.75" PointY="10.375" />
+        <EntityTypeShape EntityType="ErpDBModel.Users" Width="1.5" PointX="3" PointY="10" />
+        <AssociationConnector Association="ErpDBModel.FK_RolUsers" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

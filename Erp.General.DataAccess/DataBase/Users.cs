@@ -12,17 +12,15 @@ namespace Erp.General.DataAccess.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Persons
+    public partial class Users
     {
-        public long PersonId { get; set; }
+        public int UserId { get; set; }
+        public int RolId { get; set; }
         public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public Nullable<System.DateTime> BirthDay { get; set; }
-        public string NumberId { get; set; }
-        public Nullable<short> PersonTypeId { get; set; }
-        public Nullable<short> PreferedCurrencyId { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
     
-        public virtual Currencys Currencys { get; set; }
-        public virtual PersonType PersonType { get; set; }
+        public virtual RolUsers RolUsers { get; set; }
     }
 }
