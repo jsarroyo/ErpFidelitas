@@ -9,3 +9,14 @@ D:\Chus\Desarrollo\.NET\C#\Erp\ErpSolution\Erp.General.DataAccess\obj\Debug\Erp.
 D:\Chus\Desarrollo\.NET\C#\Erp\ErpSolution\Erp.General.DataAccess\obj\Debug\Erp.General.DataAccess.csproj.CopyComplete
 D:\Chus\Desarrollo\.NET\C#\Erp\ErpSolution\Erp.General.DataAccess\obj\Debug\Erp.General.DataAccess.dll
 D:\Chus\Desarrollo\.NET\C#\Erp\ErpSolution\Erp.General.DataAccess\obj\Debug\Erp.General.DataAccess.pdb
+D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.General.DataAccess\bin\Debug\Erp.General.DataAccess.dll.config
+D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.General.DataAccess\bin\Debug\Erp.General.DataAccess.dll
+D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.General.DataAccess\bin\Debug\Erp.General.DataAccess.pdb
+D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.General.DataAccess\bin\Debug\EntityFramework.dll
+D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.General.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.General.DataAccess\bin\Debug\EntityFramework.xml
+D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.General.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.General.DataAccess\obj\Debug\Erp.General.DataAccess.csproj.AssemblyReference.cache
+D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.General.DataAccess\obj\Debug\Erp.General.DataAccess.csproj.CoreCompileInputs.cache
+D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.General.DataAccess\obj\Debug\Erp.General.DataAccess.dll
+D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.General.DataAccess\obj\Debug\Erp.General.DataAccess.pdb

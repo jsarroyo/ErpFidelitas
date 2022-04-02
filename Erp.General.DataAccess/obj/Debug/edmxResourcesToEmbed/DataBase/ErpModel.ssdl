@@ -106,8 +106,15 @@
     <Property Name="UnitCostCurrencyId" Type="smallint" />
     <Property Name="UnitPriceCurrencyId" Type="smallint" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'ErpDB.dbo.TipoCambio' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RolUsers">
+    <Key>
+      <PropertyRef Name="RolId" />
+    </Key>
+    <Property Name="RolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeRol" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ProyectoERP.dbo.TipoCambio' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
   <EntityType Name="TipoCambio">
     <Key>
       <PropertyRef Name="Consecutivo" />
@@ -119,6 +126,17 @@ warning 6002: The table/view 'ErpDB.dbo.TipoCambio' does not have a primary key 
     <Property Name="Cod_IndicadorInterno" Type="int" Nullable="false" />
     <Property Name="Des_Fecha" Type="datetime" Nullable="false" />
     <Property Name="Num_Valor" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RolId" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
   </EntityType>
   <Association Name="FK_CompanyMovementsAccountsReceivable">
     <End Role="Companies" Type="Self.Companies" Multiplicity="1" />
@@ -157,9 +175,7 @@ warning 6002: The table/view 'ErpDB.dbo.TipoCambio' does not have a primary key 
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CompanyParameters">
-    <End Role="Companies" Type="Self.Companies" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
+    <End Role="Companies" Type="Self.Companies" Multiplicity="1" />
     <End Role="Parameters" Type="Self.Parameters" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Companies">
@@ -267,9 +283,7 @@ warning 6002: The table/view 'ErpDB.dbo.TipoCambio' does not have a primary key 
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_PersonTypeId">
-    <End Role="PersonType" Type="Self.PersonType" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
+    <End Role="PersonType" Type="Self.PersonType" Multiplicity="0..1" />
     <End Role="Persons" Type="Self.Persons" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PersonType">
@@ -281,9 +295,7 @@ warning 6002: The table/view 'ErpDB.dbo.TipoCambio' does not have a primary key 
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_PreferedCurrencyId">
-    <End Role="Currencys" Type="Self.Currencys" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
+    <End Role="Currencys" Type="Self.Currencys" Multiplicity="0..1" />
     <End Role="Persons" Type="Self.Persons" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Currencys">
@@ -303,6 +315,18 @@ warning 6002: The table/view 'ErpDB.dbo.TipoCambio' does not have a primary key 
       </Principal>
       <Dependent Role="MovementsInventory">
         <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolUsers">
+    <End Role="RolUsers" Type="Self.RolUsers" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RolUsers">
+        <PropertyRef Name="RolId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RolId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -341,6 +365,8 @@ warning 6002: The table/view 'ErpDB.dbo.TipoCambio' does not have a primary key 
     <EntitySet Name="Persons" EntityType="Self.Persons" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PersonType" EntityType="Self.PersonType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RolUsers" EntityType="Self.RolUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoCambio" EntityType="Self.TipoCambio" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [TipoCambio].[Consecutivo] AS [Consecutivo], 
@@ -408,6 +434,10 @@ warning 6002: The table/view 'ErpDB.dbo.TipoCambio' does not have a primary key 
     <AssociationSet Name="FK_Products" Association="Self.FK_Products">
       <End Role="Products" EntitySet="Products" />
       <End Role="MovementsInventory" EntitySet="MovementsInventory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolUsers" Association="Self.FK_RolUsers">
+      <End Role="RolUsers" EntitySet="RolUsers" />
+      <End Role="Users" EntitySet="Users" />
     </AssociationSet>
     <AssociationSet Name="FK_UnitCostCurrency" Association="Self.FK_UnitCostCurrency">
       <End Role="Currencys" EntitySet="Currencys" />
