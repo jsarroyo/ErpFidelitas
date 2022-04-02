@@ -125,7 +125,6 @@ D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.Api.Inventory\bin\Syst
 D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.Api.Inventory\bin\System.Web.Http.xml
 D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.Api.Inventory\bin\System.Web.Http.WebHost.xml
 D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.Api.Inventory\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.Api.Inventory\obj\Debug\Erp.Api.Inventory.csproj.AssemblyReference.cache
 D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.Api.Inventory\obj\Debug\Erp.Api.Inventory.csproj.CoreCompileInputs.cache
 D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.Api.Inventory\obj\Debug\Erp.Api.Inventory.csproj.CopyComplete
 D:\Chus\Desarrollo\.NET\C#\ErpRepository\ErpFidelitas\Erp.Api.Inventory\obj\Debug\Erp.Inventory.Api.dll

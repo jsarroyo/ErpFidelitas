@@ -9,7 +9,7 @@ namespace Erp.BL.General
 {
 	public class DB
 	{
-		DB() {
+		public DB() {
 			OpenConnection();
 		}
 		public ErpDBEntities dBEntities;

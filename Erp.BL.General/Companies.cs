@@ -5,7 +5,7 @@ using Erp.General.DataAccess.DataBase;
 
 namespace Erp.BL.General
 {
-	public interface GeneralBase
+	public interface IGeneralBase
 	{
 		Request Insert(Erp.General.DataAccess.DataBase.Companies insertar);
 		Request GetAll();
@@ -17,12 +17,13 @@ namespace Erp.BL.General
 
 	}
 	
-	public class Companies : GeneralBase
+	public class Companies : IGeneralBase
 	{ 
 		Request request;
 		readonly DB _db;
 		public Companies() {
 			request = new Request();
+			_db = new DB();
 		}
 
 		public Request Delete(int id )
@@ -179,6 +180,7 @@ namespace Erp.BL.General
 		public Currencys()
 		{
 			request = new Request();
+			_db = new DB();
 		}
 
         public Request Insert(Erp.General.DataAccess.DataBase.Currencys insertar)
@@ -340,6 +342,7 @@ namespace Erp.BL.General
 		public DocumentTypes()
 		{
 			request = new Request();
+			_db = new DB();
 		}
 
 		public Request Delete(int id)
@@ -494,6 +497,7 @@ namespace Erp.BL.General
 		public Parameters()
 		{
 			request = new Request();
+			_db = new DB();
 		}
 		public Request Delete(int id)
         {
@@ -640,7 +644,6 @@ namespace Erp.BL.General
             throw new NotImplementedException();
         }
     }
-
     public class Persons
     {
 		Request request;
@@ -648,6 +651,7 @@ namespace Erp.BL.General
 		public Persons()
 		{
 			request = new Request();
+			_db = new DB();
 		}
 		public Request Delete(int id)
         {
